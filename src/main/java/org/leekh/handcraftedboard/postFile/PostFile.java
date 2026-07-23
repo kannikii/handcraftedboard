@@ -8,18 +8,17 @@ import org.leekh.handcraftedboard.post.Post;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "postFile")
+@Table(name = "post_file")
 @Getter
 @Setter
 public class PostFile {
     @Id
-    private Long id;
-
-    @Column(name = "fileId", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "fileId")
     private Long fileId;
 
-    @Column(name = "postId", unique = true, nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "postId", nullable = false)
     private Post post;
 
     @Column(name = "originName", nullable = false)
@@ -31,6 +30,7 @@ public class PostFile {
     @Column(name = "fileUrl", nullable = false)
     private String fileUrl;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "fileType", nullable = false)
     private FileType fileType;
 

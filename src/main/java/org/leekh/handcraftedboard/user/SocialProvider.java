@@ -1,5 +1,5 @@
 package org.leekh.handcraftedboard.user;
 
-public enum socialProvider {
+public enum SocialProvider {
     NAVER, GOOGLE, APPLE
 }
